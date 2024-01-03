@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee login page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/_js/emp_login.js" defer></script>
+    <link rel="stylesheet" href="../css/login_style.css">
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="row vh-100 align-items-center justify-content-center">
+        <div class="col-sm-8 col-md-6 col-lg-4 bg-light rounded-3 p-4 shadow">
+            <div class="row text-center mb-4">
+                <h3 class="text-uppercase">Employee Panel</h3>
+            </div>
+            <form autocomplete="off">
+              <div class="form-group mt-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                  <input type="text" id="employeeUsername" class="form-control" placeholder="Your username">
+              </div>
+              <span class="text-danger" id="uname"></span>
+              </div>
+              <div class="form-group mt-4">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                  <input type="password" id="employeePassword" class="form-control" placeholder="Your password">
+                </div>
+                <span class="text-danger" id="pword"></span>
+              </div>
+              <button type="button" class="btn btn-cust-citrus w-100 round-3 text-uppercase mt-3" id="btnLogin">Login</button>
+          </form>
+        </div>
+    </div>
+  </div>
+
+  <!--Modal Start-->
+  <div class="modal fade" id="blankModal" role="modal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body text-center" id="blankModalBody">
+          <div id="blankModalMainDiv">Main Div</div>
+          <div id="blankModalMainDiv2">Main Div</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal end-->
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  </body>
+</html>

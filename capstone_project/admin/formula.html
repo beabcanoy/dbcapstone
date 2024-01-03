@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formula page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <script src="../js/sidebar.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/formula.js" type="module" defer></script>
+    
+    <link rel="stylesheet" href="../css/dashboard_style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside id="sidebar" class="p-2">
+          <div class="h-100">
+            <div class="sidebar-logo">
+              <img src="../images/V2Logo.png" alt="business logo" class="img-fluid w-100">
+              <a href="/admin/dashboard.html">Stocks Inventory System</a>
+            </div>
+            <hr class="breakline">
+            <ul class="sidebar-nav">
+              <li class="sidebar-item mt-3 mb-2 dashboard-link-style">
+                <a href="/admin/dashboard.html" class="sidebar-link">
+                  <i class="bi bi-bar-chart-line pe-2"></i>
+                  Dashboard
+                </a>
+              </li>
+              <li class="sidebar-item mb-2">
+                <a href="/admin/products.html" class="sidebar-link">
+                  <i class="bi bi-boxes pe-2"></i>
+                  Products
+                </a>
+              </li>
+              <li class="sidebar-item mb-2">
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#inventory" data-bs-toggle="collapse" aria-expanded="false">
+                  <i class="bi bi-box-seam pe-2"></i>
+                Inventory
+              </a>
+              <ul id="inventory" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="sidebar">
+                <li class="sidebar-item">
+                  <a href="/admin/raw_material.html" class="sidebar-link">Raw Materials</a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="#" class="sidebar-link">Stocks</a>
+                </li>
+              </ul>
+              </li>
+              <li class="sidebar-item mb-2">
+                <a href="#" class="sidebar-link">
+                  <i class="bi bi-clipboard-check pe-2"></i>
+                  Transactions
+                </a>
+              </li>
+              <li class="sidebar-item mb-2">
+                <a href="/admin/employee.html" class="sidebar-link">
+                  <i class="bi bi-people pe-2"></i>
+                  Users
+                </a>
+              </li>
+              <li class="sidebar-item mb-2">
+                <a href="#" class="sidebar-link collapsed" data-bs-target="#maintenance" data-bs-toggle="collapse" aria-expanded="false">
+                  <i class="bi bi-sliders pe-2"></i>
+                  Maintenance
+                </a>
+              <ul id="maintenance" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="sidebar">
+                <li class="sidebar-item">
+                  <a href="/admin/categories.html" class="sidebar-link">Categories</a>
+                </li>
+                <li class="sidebar-item">
+                  <a href="/admin/formula.html" class="sidebar-link">Formulas</a>
+                </li>
+              </ul>
+              </li>
+            </ul>
+          </div>
+      </aside>
+    
+    
+      <div class="main">
+        <nav class="navbar navbar-expand px-3 p-0 border-bottom shadow">
+            <button class="btn" id="sidebar-toggle" type="button">
+              <span class="navbar-toggler-icon border-0"></span>
+            </button>
+            <div class="navbar-collapse navbar">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                    <img src="../images/img_avatar.png" class="avatar img-fluid rounded-circle" alt="avatar">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <a href="#" class="dropdown-item">Profile</a>
+                    <a href="../index.html" class="dropdown-item">Logout</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+        </nav>
+
+        <main class="content px-3 py-2">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <h4 class="fs-3 display-5">Finished Products Formula</h4>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-special-citrus btn-sm" id="btnAddFormula">&#43 Add Formula</button>
+                  </div>
+                  <div class="container mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                </div>
+                                <div class="card-body">    
+                                        <div id="table-records"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </main>
+      </div>
+    </div>
+
+    <!--Insert Modal Start-->
+  <div class="modal fade" id="blankModal" role="modal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="blankModalTitle">Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="blankModalBody">
+          <div class="row">
+            <div class="col-sm-12" id="blankModalMainDiv">Main Div</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12" id="blankModalMainDiv2">Main Div 2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal end-->
+
+  <!--Alert Modal Start-->
+  <div class="modal fade" id="alertModal" role="modal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body text-center" id="alertModalBody">
+          <div id="alertModalMainDiv">Main Div</div>
+          <div id="alertModalMainDiv2">Main Div</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal end-->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+  </body>
+</html>
